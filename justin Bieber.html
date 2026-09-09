@@ -311,7 +311,9 @@
       { title: 'Baby - Justin Bieber ft. Ludacris', src: 'music/Baby.mp3' },
       { title: 'Beauty And A Beat - Justin Bieber', src: 'music/Bieber-Beauty-And-A-Beat.mp3' },
       { title: 'Love Yourself - Justin Bieber', src: 'music/Love-Yourself.mp3' },
-      { title: 'Sorry - Justin Bieber', src: 'music/Sorry.mp3' }
+      { title: 'Sorry - Justin Bieber', src: 'music/Sorry.mp3' },
+      { title: '2 Much - Justin Bieber', src: 'music/2-Much.mp3' },
+      { title: 'That Should Be Me - Justin Bieber', src: 'music/That-Should-Be-Me.mp3' }
     ];
     let trackIndex = 0;
     const audio = document.getElementById('audioPlayer');
@@ -426,6 +428,10 @@
     audio.addEventListener('timeupdate', updateProgress);
     audio.addEventListener('play', () => { playPause.textContent = 'Dừng'; });
     audio.addEventListener('pause', () => { playPause.textContent = 'Phát'; });
+    audio.addEventListener('error', () => {
+      duration.textContent = 'Lỗi file';
+      playPause.textContent = 'Phát';
+    });
     audio.addEventListener('ended', () => loadTrack(trackIndex + 1, true));
     loadTrack(0, false);
     addEventListener('resize', () => {
